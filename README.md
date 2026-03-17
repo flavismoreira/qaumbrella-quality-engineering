@@ -117,8 +117,7 @@ qaumbrella-quality-engineering/
 ### ✅ E2E
 
 - Navegação do usuário
-- Autenticação
-- Fluxos principais
+- Fluxos principais (ex.: diagnóstico com e sem login)
 
 ### 🔌 API
 
@@ -146,6 +145,12 @@ qaumbrella-quality-engineering/
 
 - **Linguagem dos testes**: TypeScript (`.ts`)
 - **Configurações principais**: `playwright.config.ts`, `vitest.config.ts`, `tsconfig.json`
+
+### Organização das suítes
+
+- E2E em `tests/e2e/`, nomeados por **módulo + variação**
+  - Ex.: `diagnostico-sem-login.e2e.spec.ts`, `diagnostico-com-login.e2e.spec.ts`
+- Page Objects de apoio em `tests/e2e/pages/`
 
 ### Scripts (npm)
 

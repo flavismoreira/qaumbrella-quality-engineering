@@ -11,6 +11,13 @@ Planejar e acompanhar a execução das suítes de teste deste repositório.
 - **Contrato**: compatibilidade consumidor/provedor
 - **Performance**: baseline de throughput/latência e limiares de regressão
 
+### Organização das suítes
+
+- `tests/e2e/`: testes end-to-end por **módulo/fluxo**
+  - Ex.: `diagnostico-sem-login.e2e.spec.ts`, `diagnostico-com-login.e2e.spec.ts`
+- `tests/api/`: testes de API organizados por **recurso/domínio**
+- `tests/performance/`: cenários de k6 relacionados a fluxos críticos
+
 ## Dados de teste e fixtures
 
 - `fixtures/`: fixtures estáticas (arquivos, mocks, etc.)
