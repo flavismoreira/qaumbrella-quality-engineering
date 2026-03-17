@@ -1,0 +1,29 @@
+{
+  "name": "qaumbrella-quality-engineering",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Estrutura base de quality engineering: testes e2e, api, contrato, performance e unitários.",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e && npm run test:api",
+    "test:unit": "vitest run --passWithNoTests",
+    "test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.playwright-browsers playwright test tests/e2e --pass-with-no-tests",
+    "test:api": "PLAYWRIGHT_BROWSERS_PATH=.playwright-browsers playwright test tests/api --pass-with-no-tests",
+    "playwright:install": "PLAYWRIGHT_BROWSERS_PATH=.playwright-browsers playwright install",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.1",
+    "vitest": "^3.2.4"
+  }
+}
