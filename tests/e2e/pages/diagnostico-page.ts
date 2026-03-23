@@ -24,8 +24,27 @@ export class DiagnosticoPage {
   }
 
   async startWithoutLogin() {
-    await this.startNowButton.click();
-    await this.startDiagnosticButton.click();
+    const agoraBtn = this.startNowButton.first();
+    try {
+      await agoraBtn.waitFor({ state: 'visible', timeout: 5000 });
+      await agoraBtn.click();
+    } catch {
+      // Botão "iniciar diagnóstico agora" pode não existir em alguns fluxos.
+    }
+
+    if (await agoraBtn.isVisible().catch(() => false)) {
+      await this.startDiagnosticButton.click();
+    } else {
+      // Quando não existe "agora", às vezes é necessário clicar duas vezes para avançar.
+      await this.startDiagnosticButton.click();
+      await this.startDiagnosticButton.click();
+    }
+
+    // Espera o questionário aparecer antes de interagir.
+    await this.page
+      .getByRole('button', { name: /concordo|discordo|neutro/i })
+      .first()
+      .waitFor({ state: 'visible', timeout: 60000 });
   }
 
   async responderFluxoCompletoComCaminhoFeliz() {

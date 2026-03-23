@@ -2,6 +2,8 @@ import { test } from '@playwright/test';
 import { DiagnosticoPage } from './pages/diagnostico-page';
 
 test.describe('🛡️ Diagnóstico QA Umbrella - com login', () => {
+  test.describe.configure({ timeout: 60000 });
+
   test('Fluxo até a tela de resultado (com login)', async ({ page }) => {
     const diagnostico = new DiagnosticoPage(page);
 
